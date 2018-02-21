@@ -1,21 +1,43 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Input, Button } from 'semantic-ui-react';
+
+import Screen from './enum/Screen';
+
+import Styles from './styles/App';
+import 'semantic-ui-css/semantic.min.css';
+
+const NavBar = () => (
+    <div style={Styles.navBarContainer}>
+        <SearchBar style={Styles.searchBar} inverted/>
+        <CircleButton icon='fire'/>
+        <CircleButton icon='random'/>
+    </div>
+);
+
+const SearchBar = props => (
+    <Input icon='search' placeholder='Search...' {...props}/>
+);
+
+const CircleButton = props => (
+    <Button circular {...props}/>
+);
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+    constructor() {
+        super();
+
+        this.state = {
+            displayed: Screen.trending
+        }
+    }
+
+    render() {
+        return (
+            <div>
+                <NavBar/>
+            </div>
+        );
+    }
 }
 
 export default App;
