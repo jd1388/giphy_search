@@ -8,5 +8,10 @@ export default {
     },
     searchBar: {
         width: '50%'
+    },
+    circleButton: {
+        backgroundColor: '#434343',
+        color: 'white',
+        marginLeft: '0.5vw'
     }
 };

@@ -19,7 +19,7 @@ const SearchBar = props => (
 );
 
 const CircleButton = props => (
-    <Button circular {...props}/>
+    <Button circular style={Styles.circleButton} {...props}/>
 );
 
 class App extends Component {
