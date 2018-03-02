@@ -13,5 +13,8 @@ export default {
         backgroundColor: '#434343',
         color: 'white',
         marginLeft: '0.5vw'
+    },
+    mainContent: {
+        padding: '5vh 20vw'
     }
 };

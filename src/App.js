@@ -22,6 +22,17 @@ const CircleButton = props => (
     <Button circular style={Styles.circleButton} {...props}/>
 );
 
+const Trending = props => {
+    const { screen } = props;
+
+    if (screen !== Screen.trending)
+        return <div/>;
+
+    return (
+        <div>Hello, I'm trending!!!</div>
+    );
+};
+
 class App extends Component {
     constructor() {
         super();
@@ -35,6 +46,9 @@ class App extends Component {
         return (
             <div>
                 <NavBar/>
+                <div style={Styles.mainContent}>
+                    <Trending screen={this.state.displayed}/>
+                </div>
             </div>
         );
     }
