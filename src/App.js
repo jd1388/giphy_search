@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Input, Button } from 'semantic-ui-react';
 
+import Trending from './components/Trending';
+
 import Screen from './enum/Screen';
 
 import Styles from './styles/App';
@@ -21,17 +23,6 @@ const SearchBar = props => (
 const CircleButton = props => (
     <Button circular style={Styles.circleButton} {...props}/>
 );
-
-const Trending = props => {
-    const { screen } = props;
-
-    if (screen !== Screen.trending)
-        return <div/>;
-
-    return (
-        <div>Hello, I'm trending!!!</div>
-    );
-};
 
 class App extends Component {
     constructor() {
