@@ -17,7 +17,7 @@ const NavBar = () => (
 );
 
 const SearchBar = props => (
-    <Input icon='search' placeholder='Search...' {...props}/>
+    <Input action={{ icon: 'search' }} placeholder='Search...' {...props}/>
 );
 
 const CircleButton = props => (
