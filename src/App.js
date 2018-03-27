@@ -30,7 +30,7 @@ class App extends Component {
 
         this.state = {
             displayed: Screen.trending
-        }
+        };
     }
 
     render() {
