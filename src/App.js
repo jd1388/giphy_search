@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Input, Button } from 'semantic-ui-react';
 
 import Trending from './components/Trending';
+import Search from './components/Search';
 
 import Screen from './enum/Screen';
 
@@ -41,7 +42,9 @@ class App extends Component {
 
         this.state = {
             displayed: Screen.trending,
-            search: ''
+            search: '',
+            updateSearch: false,
+            serachToSend: ''
         };
 
         this.setScreenToSearch = this.setScreenToSearch.bind(this);
@@ -51,7 +54,7 @@ class App extends Component {
     }
 
     setScreenToSearch() {
-        this.setState({ displayed: Screen.search });
+        this.setState({ displayed: Screen.search, updateSearch: true, searchToSend: this.state.search });
     }
 
     setScreenToTrending() {
@@ -67,6 +70,8 @@ class App extends Component {
     }
 
     render() {
+        const { displayed, searchToSend, updateSearch } = this.state;
+
         return (
             <div>
                 <NavBar
@@ -76,10 +81,17 @@ class App extends Component {
                     setSearchQuery={this.setSearchQuery}
                 />
                 <div style={Styles.mainContent}>
-                    <Trending screen={this.state.displayed}/>
+                    <Trending screen={displayed}/>
+                    <Search screen={displayed} search={searchToSend} update={updateSearch}/>
                 </div>
             </div>
         );
+    }
+
+    componentDidUpdate() {
+        if (this.state.updateSearch) {
+            this.setState({ updateSearch: false });
+        }
     }
 }
 
