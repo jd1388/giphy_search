@@ -40,6 +40,12 @@ export default class Trending extends Component {
             .then(data => this.parseGifData(data));
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.update) {
+            this.setState({ refreshGifs: true });
+        }
+    }
+
     render() {
         const { screen } = this.props;
         const { refreshGifs, gifs } = this.state;

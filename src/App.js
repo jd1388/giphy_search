@@ -44,7 +44,8 @@ class App extends Component {
             displayed: Screen.trending,
             search: '',
             updateSearch: false,
-            serachToSend: ''
+            serachToSend: '',
+            updateTrending: false
         };
 
         this.setScreenToSearch = this.setScreenToSearch.bind(this);
@@ -58,7 +59,7 @@ class App extends Component {
     }
 
     setScreenToTrending() {
-        this.setState({ displayed: Screen.trending });
+        this.setState({ displayed: Screen.trending, updateTrending: true });
     }
 
     setScreenToRandom() {
@@ -70,7 +71,7 @@ class App extends Component {
     }
 
     render() {
-        const { displayed, searchToSend, updateSearch } = this.state;
+        const { displayed, searchToSend, updateSearch, updateTrending } = this.state;
 
         return (
             <div>
@@ -81,7 +82,7 @@ class App extends Component {
                     setSearchQuery={this.setSearchQuery}
                 />
                 <div style={Styles.mainContent}>
-                    <Trending screen={displayed}/>
+                    <Trending screen={displayed} update={updateTrending}/>
                     <Search screen={displayed} search={searchToSend} update={updateSearch}/>
                 </div>
             </div>
