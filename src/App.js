@@ -11,7 +11,7 @@ import 'semantic-ui-css/semantic.min.css';
 const NavBar = props => (
     <div style={Styles.navBarContainer}>
         <SearchBar style={Styles.searchBar} inverted setScreenToSearch={props.setScreenToSearch}/>
-        <CircleButton icon='fire'/>
+        <CircleButton icon='fire' onClick={() => props.setScreenToTrending()}/>
         <CircleButton icon='random'/>
     </div>
 );
@@ -38,16 +38,21 @@ class App extends Component {
         };
 
         this.setScreenToSearch = this.setScreenToSearch.bind(this);
+        this.setScreenToTrending = this.setScreenToTrending.bind(this);
     }
 
     setScreenToSearch() {
         this.setState({ displayed: Screen.search });
     }
 
+    setScreenToTrending() {
+        this.setState({ displayed: Screen.trending });
+    }
+
     render() {
         return (
             <div>
-                <NavBar setScreenToSearch={this.setScreenToSearch}/>
+                <NavBar setScreenToSearch={this.setScreenToSearch} setScreenToTrending={this.setScreenToTrending}/>
                 <div style={Styles.mainContent}>
                     <Trending screen={this.state.displayed}/>
                 </div>
