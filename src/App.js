@@ -10,7 +10,12 @@ import 'semantic-ui-css/semantic.min.css';
 
 const NavBar = props => (
     <div style={Styles.navBarContainer}>
-        <SearchBar style={Styles.searchBar} inverted setScreenToSearch={props.setScreenToSearch}/>
+        <SearchBar
+            style={Styles.searchBar}
+            inverted
+            setScreenToSearch={props.setScreenToSearch}
+            setSearchQuery={props.setSearchQuery}
+        />
         <CircleButton icon='fire' onClick={() => props.setScreenToTrending()}/>
         <CircleButton icon='random' onClick={() => props.setScreenToRandom()}/>
     </div>
@@ -22,6 +27,7 @@ const SearchBar = props => (
         placeholder='Search...'
         style={props.style}
         inverted={props.inverted}
+        onChange={event => props.setSearchQuery(event.target.value)}
     />
 );
 
@@ -34,12 +40,14 @@ class App extends Component {
         super();
 
         this.state = {
-            displayed: Screen.trending
+            displayed: Screen.trending,
+            search: ''
         };
 
         this.setScreenToSearch = this.setScreenToSearch.bind(this);
         this.setScreenToTrending = this.setScreenToTrending.bind(this);
         this.setScreenToRandom = this.setScreenToRandom.bind(this);
+        this.setSearchQuery = this.setSearchQuery.bind(this);
     }
 
     setScreenToSearch() {
@@ -54,6 +62,10 @@ class App extends Component {
         this.setState({ displayed: Screen.random });
     }
 
+    setSearchQuery(query) {
+        this.setState({ search: query });
+    }
+
     render() {
         return (
             <div>
@@ -61,6 +73,7 @@ class App extends Component {
                     setScreenToSearch={this.setScreenToSearch}
                     setScreenToTrending={this.setScreenToTrending}
                     setScreenToRandom={this.setScreenToRandom}
+                    setSearchQuery={this.setSearchQuery}
                 />
                 <div style={Styles.mainContent}>
                     <Trending screen={this.state.displayed}/>
