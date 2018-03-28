@@ -3,6 +3,7 @@ import { Input, Button } from 'semantic-ui-react';
 
 import Trending from './components/Trending';
 import Search from './components/Search';
+import Random from './components/Random';
 
 import Screen from './enum/Screen';
 
@@ -58,7 +59,8 @@ class App extends Component {
             search: '',
             updateSearch: false,
             serachToSend: '',
-            updateTrending: false
+            updateTrending: false,
+            updateRandom: false
         };
 
         this.setScreenToSearch = this.setScreenToSearch.bind(this);
@@ -76,7 +78,7 @@ class App extends Component {
     }
 
     setScreenToRandom() {
-        this.setState({ displayed: Screen.random });
+        this.setState({ displayed: Screen.random, updateRandom: true });
     }
 
     setSearchQuery(query) {
@@ -84,7 +86,7 @@ class App extends Component {
     }
 
     render() {
-        const { displayed, searchToSend, updateSearch, updateTrending } = this.state;
+        const { displayed, searchToSend, updateSearch, updateTrending, updateRandom } = this.state;
 
         return (
             <div>
@@ -98,6 +100,7 @@ class App extends Component {
                 <div style={Styles.mainContent}>
                     <Trending screen={displayed} update={updateTrending}/>
                     <Search screen={displayed} search={searchToSend} update={updateSearch}/>
+                    <Random screen={displayed} update={updateRandom}/>
                 </div>
             </div>
         );
@@ -110,6 +113,10 @@ class App extends Component {
 
         if (this.state.updateTrending) {
             this.setState({ updateTrending: false });
+        }
+
+        if (this.state.updateRandom) {
+            this.setState({ updateRandom: false })
         }
     }
 }
