@@ -6,6 +6,8 @@ import Gif from './Gif';
 import Screen from '../enum/Screen';
 import Routes from '../enum/Routes';
 
+import Styles from '../styles/components/Random';
+
 export default class Random extends Component {
     constructor() {
         super();
@@ -20,10 +22,11 @@ export default class Random extends Component {
     parseGifData(giphyData) {
         const gifImages = giphyData.data.images;
 
+        console.log(gifImages);
+
         const gif = {
-            gif: gifImages.fixed_height_small.url,
-            still: gifImages.fixed_height_small_still.url,
-            source: gifImages.source.url
+            still: gifImages.original_still.url,
+            source: gifImages.original.url
         };
 
         this.setState({ gif, refresh: false });
@@ -62,7 +65,9 @@ export default class Random extends Component {
         return (
             <div>
                 <Header size='huge' dividing>Random</Header>
-                <Gif gifUrl={gif}/>
+                <div style={Styles.gifContainer}>
+                    <Gif native gifUrl={gif} style={Styles.gif}/>
+                </div>
             </div>
         )
     }
