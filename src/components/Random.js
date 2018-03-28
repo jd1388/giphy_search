@@ -12,6 +12,7 @@ export default class Random extends Component {
 
         this.state = {
             refresh: true,
+            get: true,
             gif: {}
         };
     }
@@ -21,7 +22,8 @@ export default class Random extends Component {
 
         const gif = {
             gif: gifImages.fixed_height_small.url,
-            still: gifImages.fixed_height_small_still.url
+            still: gifImages.fixed_height_small_still.url,
+            source: gifImages.source.url
         };
 
         this.setState({ gif, refresh: false });
@@ -37,19 +39,20 @@ export default class Random extends Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.update) {
-            this.setState({ refresh: true });
+            this.setState({ refresh: true, get: true });
         }
     }
 
     render() {
         const { screen } = this.props;
-        const { refresh, gif } = this.state;
+        const { refresh, gif, get } = this.state;
 
         if (screen !== Screen.random)
             return <div/>;
 
         if (refresh) {
-            this.getGif();
+            if (get)
+                this.getGif();
 
             return (
                 <Loader active size='massive'/>
@@ -62,5 +65,11 @@ export default class Random extends Component {
                 <Gif gifUrl={gif}/>
             </div>
         )
+    }
+
+    componentDidUpdate() {
+        if (this.state.get) {
+            this.setState({ get: false });
+        }
     }
 }
