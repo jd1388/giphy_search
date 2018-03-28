@@ -8,16 +8,21 @@ import Screen from './enum/Screen';
 import Styles from './styles/App';
 import 'semantic-ui-css/semantic.min.css';
 
-const NavBar = () => (
+const NavBar = props => (
     <div style={Styles.navBarContainer}>
-        <SearchBar style={Styles.searchBar} inverted/>
+        <SearchBar style={Styles.searchBar} inverted setScreenToSearch={props.setScreenToSearch}/>
         <CircleButton icon='fire'/>
         <CircleButton icon='random'/>
     </div>
 );
 
 const SearchBar = props => (
-    <Input action={{ icon: 'search' }} placeholder='Search...' {...props}/>
+    <Input
+        action={{ icon: 'search', onClick: () => props.setScreenToSearch() }}
+        placeholder='Search...'
+        style={props.style}
+        inverted={props.inverted}
+    />
 );
 
 const CircleButton = props => (
@@ -31,12 +36,18 @@ class App extends Component {
         this.state = {
             displayed: Screen.trending
         };
+
+        this.setScreenToSearch = this.setScreenToSearch.bind(this);
+    }
+
+    setScreenToSearch() {
+        this.setState({ displayed: Screen.search });
     }
 
     render() {
         return (
             <div>
-                <NavBar/>
+                <NavBar setScreenToSearch={this.setScreenToSearch}/>
                 <div style={Styles.mainContent}>
                     <Trending screen={this.state.displayed}/>
                 </div>
