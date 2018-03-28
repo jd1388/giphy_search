@@ -8,7 +8,7 @@ const createRequest = (endpoint, args) => {
 
     variables.forEach(variable => url = `${url}&${variable}=${args[variable]}`);
 
-    return url;
+    return url.replace(' ', '+');
 };
 
 export default {
