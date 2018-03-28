@@ -17,8 +17,16 @@ const NavBar = props => (
             setScreenToSearch={props.setScreenToSearch}
             setSearchQuery={props.setSearchQuery}
         />
-        <CircleButton icon='fire' onClick={() => props.setScreenToTrending()}/>
-        <CircleButton icon='random' onClick={() => props.setScreenToRandom()}/>
+        <CircleButton
+            active={props.activeScreen === Screen.trending}
+            icon='fire'
+            onClick={() => props.setScreenToTrending()}
+        />
+        <CircleButton
+            active={props.activeScreen === Screen.random}
+            icon='random'
+            onClick={() => props.setScreenToRandom()}
+        />
     </div>
 );
 
@@ -33,7 +41,12 @@ const SearchBar = props => (
 );
 
 const CircleButton = props => (
-    <Button circular style={Styles.circleButton} {...props}/>
+    <Button
+        circular
+        style={props.active ? Object.assign({}, Styles.circleButton, { color: '#FF6F00' }) : Styles.circleButton}
+        icon={props.icon}
+        onClick={props.onClick}
+    />
 );
 
 class App extends Component {
@@ -80,6 +93,7 @@ class App extends Component {
                     setScreenToTrending={this.setScreenToTrending}
                     setScreenToRandom={this.setScreenToRandom}
                     setSearchQuery={this.setSearchQuery}
+                    activeScreen={displayed}
                 />
                 <div style={Styles.mainContent}>
                     <Trending screen={displayed} update={updateTrending}/>
