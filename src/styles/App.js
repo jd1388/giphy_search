@@ -19,9 +19,10 @@ export default {
     },
     copyMessage: {
         position: 'fixed',
-        width: '30%',
-        bottom: '3vh',
-        left: '35%',
-        margin: '0 auto'
+        width: '10%',
+        bottom: '5vh',
+        left: '45%',
+        margin: '0 auto',
+        textAlign: 'center'
     }
 };
