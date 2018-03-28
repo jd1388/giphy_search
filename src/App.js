@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Input, Button } from 'semantic-ui-react';
+import { Input, Button, Message } from 'semantic-ui-react';
 
 import Trending from './components/Trending';
 import Search from './components/Search';
@@ -50,6 +50,12 @@ const CircleButton = props => (
     />
 );
 
+const CopyMessage = props => (
+    <Message positive hidden={!props.display} style={Styles.copyMessage}>
+        GIF link copied!
+    </Message>
+);
+
 class App extends Component {
     constructor() {
         super();
@@ -60,7 +66,8 @@ class App extends Component {
             updateSearch: false,
             serachToSend: '',
             updateTrending: false,
-            updateRandom: false
+            updateRandom: false,
+            displayMessage: false
         };
 
         this.setScreenToSearch = this.setScreenToSearch.bind(this);
@@ -86,7 +93,14 @@ class App extends Component {
     }
 
     render() {
-        const { displayed, searchToSend, updateSearch, updateTrending, updateRandom } = this.state;
+        const {
+            displayed,
+            searchToSend,
+            updateSearch,
+            updateTrending,
+            updateRandom,
+            displayMessage
+        } = this.state;
 
         return (
             <div>
@@ -101,6 +115,7 @@ class App extends Component {
                     <Trending screen={displayed} update={updateTrending}/>
                     <Search screen={displayed} search={searchToSend} update={updateSearch}/>
                     <Random screen={displayed} update={updateRandom}/>
+                    <CopyMessage display={displayMessage}/>
                 </div>
             </div>
         );

@@ -16,5 +16,12 @@ export default {
     },
     mainContent: {
         padding: '5vh 20vw'
+    },
+    copyMessage: {
+        position: 'fixed',
+        width: '30%',
+        bottom: '3vh',
+        left: '35%',
+        margin: '0 auto'
     }
 };
