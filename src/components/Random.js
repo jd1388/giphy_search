@@ -22,8 +22,6 @@ export default class Random extends Component {
     parseGifData(giphyData) {
         const gifImages = giphyData.data.images;
 
-        console.log(gifImages);
-
         const gif = {
             still: gifImages.original_still.url,
             source: gifImages.original.url
