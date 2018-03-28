@@ -95,6 +95,8 @@ class App extends Component {
 
     setMessageToDisplayed() {
         this.setState({ displayMessage: true });
+
+        setTimeout(() => this.setState({ displayMessage: false }), 2000);
     }
 
     render() {
