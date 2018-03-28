@@ -107,6 +107,10 @@ class App extends Component {
         if (this.state.updateSearch) {
             this.setState({ updateSearch: false });
         }
+
+        if (this.state.updateTrending) {
+            this.setState({ updateTrending: false });
+        }
     }
 }
 
