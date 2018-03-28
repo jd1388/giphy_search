@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Input, Button, Message } from 'semantic-ui-react';
+import { Input, Button, Message, Transition } from 'semantic-ui-react';
 
 import Trending from './components/Trending';
 import Search from './components/Search';
@@ -51,9 +51,11 @@ const CircleButton = props => (
 );
 
 const CopyMessage = props => (
-    <Message positive hidden={!props.display} style={Styles.copyMessage}>
-        GIF link copied!
-    </Message>
+    <Transition visible={props.display} animation='fade up' duration={350}>
+        <Message positive style={Styles.copyMessage}>
+            GIF link copied!
+        </Message>
+    </Transition>
 );
 
 class App extends Component {

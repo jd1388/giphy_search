@@ -20,7 +20,7 @@ export default {
     copyMessage: {
         position: 'fixed',
         width: '10%',
-        bottom: '5vh',
+        bottom: '10vh',
         left: '45%',
         margin: '0 auto',
         textAlign: 'center'
