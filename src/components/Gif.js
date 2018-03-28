@@ -14,12 +14,12 @@ export default class Gif extends Component {
     }
 
     render() {
-        const { native, gifUrl, style } = this.props;
+        const { native, gifUrl, style, displayMessage } = this.props;
         const { still, gif, source } = gifUrl;
         const { url } = this.state;
 
         return (
-            <CopyToClipboard text={source}>
+            <CopyToClipboard text={source} onCopy={displayMessage}>
                 <Image
                     src={url}
                     style={Object.assign({}, Styles.gif, style)}

@@ -48,7 +48,7 @@ export default class Search extends Component {
     }
 
     render() {
-        const { screen, search } = this.props;
+        const { screen, search, displayMessage } = this.props;
         const { refreshGifs, gifs } = this.state;
 
         if (screen !== Screen.search)
@@ -65,7 +65,7 @@ export default class Search extends Component {
             const gifComponents = [];
 
             gifs.forEach(gifUrl => {
-                gifComponents.push(<Gif key={gifUrl.gif} gifUrl={gifUrl}/>)
+                gifComponents.push(<Gif key={gifUrl.gif} gifUrl={gifUrl} displayMessage={displayMessage}/>)
             });
 
             return (

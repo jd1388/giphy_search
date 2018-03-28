@@ -48,7 +48,7 @@ export default class Trending extends Component {
     }
 
     render() {
-        const { screen } = this.props;
+        const { screen, displayMessage } = this.props;
         const { refreshGifs, gifs } = this.state;
 
         if (screen !== Screen.trending)
@@ -65,7 +65,7 @@ export default class Trending extends Component {
             const gifComponents = [];
 
             gifs.forEach(gifUrl => {
-                gifComponents.push(<Gif key={gifUrl.gif} gifUrl={gifUrl}/>)
+                gifComponents.push(<Gif key={gifUrl.gif} gifUrl={gifUrl} displayMessage={displayMessage}/>);
             });
 
             return (

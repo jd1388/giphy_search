@@ -47,7 +47,7 @@ export default class Random extends Component {
     }
 
     render() {
-        const { screen } = this.props;
+        const { screen, displayMessage } = this.props;
         const { refresh, gif, get } = this.state;
 
         if (screen !== Screen.random)
@@ -66,7 +66,7 @@ export default class Random extends Component {
             <div>
                 <Header size='huge' dividing>Random</Header>
                 <div style={Styles.gifContainer}>
-                    <Gif native gifUrl={gif} style={Styles.gif}/>
+                    <Gif native gifUrl={gif} style={Styles.gif} displayMessage={displayMessage}/>
                 </div>
             </div>
         )

@@ -74,6 +74,7 @@ class App extends Component {
         this.setScreenToTrending = this.setScreenToTrending.bind(this);
         this.setScreenToRandom = this.setScreenToRandom.bind(this);
         this.setSearchQuery = this.setSearchQuery.bind(this);
+        this.setMessageToDisplayed = this.setMessageToDisplayed.bind(this);
     }
 
     setScreenToSearch() {
@@ -90,6 +91,10 @@ class App extends Component {
 
     setSearchQuery(query) {
         this.setState({ search: query });
+    }
+
+    setMessageToDisplayed() {
+        this.setState({ displayMessage: true });
     }
 
     render() {
@@ -112,9 +117,22 @@ class App extends Component {
                     activeScreen={displayed}
                 />
                 <div style={Styles.mainContent}>
-                    <Trending screen={displayed} update={updateTrending}/>
-                    <Search screen={displayed} search={searchToSend} update={updateSearch}/>
-                    <Random screen={displayed} update={updateRandom}/>
+                    <Trending
+                        screen={displayed}
+                        update={updateTrending}
+                        displayMessage={this.setMessageToDisplayed}
+                    />
+                    <Search
+                        screen={displayed}
+                        search={searchToSend}
+                        update={updateSearch}
+                        displayMessage={this.setMessageToDisplayed}
+                    />
+                    <Random
+                        screen={displayed}
+                        update={updateRandom}
+                        displayMessage={this.setMessageToDisplayed}
+                    />
                     <CopyMessage display={displayMessage}/>
                 </div>
             </div>
