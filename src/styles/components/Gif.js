@@ -1,5 +1,6 @@
 export default {
     gif: {
-        padding: '10px'
+        padding: '10px',
+        cursor: 'pointer'
     }
 };

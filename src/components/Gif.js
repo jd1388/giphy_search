@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Image } from 'semantic-ui-react';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 import Styles from '../styles/components/Gif';
 
@@ -18,12 +19,14 @@ export default class Gif extends Component {
         const { url } = this.state;
 
         return (
-            <Image
-                src={url}
-                style={Object.assign({}, Styles.gif, style)}
-                onMouseOver={() => this.setState({ url: native ? source : gif })}
-                onMouseOut={() => this.setState({ url: still })}
-            />
+            <CopyToClipboard text={source}>
+                <Image
+                    src={url}
+                    style={Object.assign({}, Styles.gif, style)}
+                    onMouseOver={() => this.setState({ url: native ? source : gif })}
+                    onMouseOut={() => this.setState({ url: still })}
+                />
+            </CopyToClipboard>
         );
     }
 }

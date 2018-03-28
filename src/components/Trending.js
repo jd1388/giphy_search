@@ -25,7 +25,8 @@ export default class Trending extends Component {
         gifData.forEach(data => {
             gifs.push({
                 gif: data.images.fixed_height_small.url,
-                still: data.images.fixed_height_small_still.url
+                still: data.images.fixed_height_small_still.url,
+                source: data.images.original.url
             })
         });
 
