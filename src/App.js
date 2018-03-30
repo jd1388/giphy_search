@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import { Input, Button, Message, Transition } from 'semantic-ui-react';
 
 import Trending from './components/Trending';
@@ -31,15 +32,41 @@ const NavBar = props => (
     </div>
 );
 
-const SearchBar = props => (
-    <Input
-        action={{ icon: 'search', onClick: () => props.setScreenToSearch() }}
-        placeholder='Search...'
-        style={props.style}
-        inverted={props.inverted}
-        onChange={event => props.setSearchQuery(event.target.value)}
-    />
-);
+class SearchBar extends Component {
+    constructor() {
+        super();
+
+        this.search = this.search.bind(this);
+    }
+
+    search(event) {
+        if (event.keyCode === 13)
+        this.props.setScreenToSearch();
+    }
+
+    componentDidMount() {
+        ReactDOM.findDOMNode(this).addEventListener('keyup', this.search, false);
+    }
+
+    render() {
+        const {
+            setScreenToSearch,
+            style,
+            inverted,
+            setSearchQuery
+        } = this.props;
+
+        return (
+            <Input
+                action={{ icon: 'search', onClick: () => setScreenToSearch() }}
+                placeholder='Search...'
+                style={style}
+                inverted={inverted}
+                onChange={event => setSearchQuery(event.target.value)}
+            />
+        );
+    }
+};
 
 const CircleButton = props => (
     <Button
