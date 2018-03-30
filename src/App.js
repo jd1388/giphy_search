@@ -58,6 +58,12 @@ const CopyMessage = props => (
     </Transition>
 );
 
+const Footer = () => (
+    <div style={Styles.footerContainer}>
+        © by &nbsp;<a style={Styles.link} href='https://jd1388.github.io'>Jared Griffin</a>
+    </div>
+);
+
 class App extends Component {
     constructor() {
         super();
@@ -139,6 +145,7 @@ class App extends Component {
                     />
                     <CopyMessage display={displayMessage}/>
                 </div>
+                <Footer/>
             </div>
         );
     }

@@ -24,5 +24,16 @@ export default {
         left: '45%',
         margin: '0 auto',
         textAlign: 'center'
+    },
+    footerContainer: {
+        minHeight: '100px',
+        backgroundColor: '#232323',
+        display: 'flex',
+        justifyContent: 'center',
+        color: '#434343',
+        alignItems: 'center'
+    },
+    link: {
+        color: '#FF6F00'
     }
 };
