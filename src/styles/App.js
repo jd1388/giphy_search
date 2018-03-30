@@ -1,10 +1,8 @@
 export default {
-    navBarContainer: {
+    navBar: {
         width: '100%',
         display: 'flex',
-        justifyContent: 'center',
-        padding: '5vh 0',
-        backgroundColor: '#232323'
+        justifyContent: 'center'
     },
     searchBar: {
         width: '50%'
@@ -15,7 +13,8 @@ export default {
         marginLeft: '0.5vw'
     },
     mainContent: {
-        padding: '5vh 20vw'
+        padding: '5vh 20vw',
+        minHeight: 'calc(100vh - 250px)'
     },
     copyMessage: {
         position: 'fixed',
@@ -35,5 +34,12 @@ export default {
     },
     link: {
         color: '#FF6F00'
+    },
+    navBarContainer: {
+        height: '150px',
+        display: 'flex',
+        alignItems: 'center',
+        backgroundColor: '#232323',
+        width: '100%'
     }
 };

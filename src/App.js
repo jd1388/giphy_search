@@ -13,22 +13,24 @@ import 'semantic-ui-css/semantic.min.css';
 
 const NavBar = props => (
     <div style={Styles.navBarContainer}>
-        <SearchBar
-            style={Styles.searchBar}
-            inverted
-            setScreenToSearch={props.setScreenToSearch}
-            setSearchQuery={props.setSearchQuery}
-        />
-        <CircleButton
-            active={props.activeScreen === Screen.trending}
-            icon='fire'
-            onClick={() => props.setScreenToTrending()}
-        />
-        <CircleButton
-            active={props.activeScreen === Screen.random}
-            icon='random'
-            onClick={() => props.setScreenToRandom()}
-        />
+        <div style={Styles.navBar}>
+            <SearchBar
+                style={Styles.searchBar}
+                inverted
+                setScreenToSearch={props.setScreenToSearch}
+                setSearchQuery={props.setSearchQuery}
+            />
+            <CircleButton
+                active={props.activeScreen === Screen.trending}
+                icon='fire'
+                onClick={() => props.setScreenToTrending()}
+            />
+            <CircleButton
+                active={props.activeScreen === Screen.random}
+                icon='random'
+                onClick={() => props.setScreenToRandom()}
+            />
+        </div>
     </div>
 );
 

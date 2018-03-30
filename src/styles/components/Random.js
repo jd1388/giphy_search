@@ -3,7 +3,7 @@ export default {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        paddingTop: '40px'
+        paddingTop: '30px'
     },
     gif: {
         minHeight: '50vh'
