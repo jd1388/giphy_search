@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Input, Button, Message, Transition } from 'semantic-ui-react';
+import { Input, Button, Message, Transition, Popup } from 'semantic-ui-react';
 
 import Trending from './components/Trending';
 import Search from './components/Search';
@@ -24,11 +24,13 @@ const NavBar = props => (
                 active={props.activeScreen === Screen.trending}
                 icon='fire'
                 onClick={() => props.setScreenToTrending()}
+                tooltip='Trending'
             />
             <CircleButton
                 active={props.activeScreen === Screen.random}
                 icon='random'
                 onClick={() => props.setScreenToRandom()}
+                tooltip='Random'
             />
         </div>
     </div>
@@ -71,13 +73,20 @@ class SearchBar extends Component {
 };
 
 const CircleButton = props => (
-    <Button
-        circular
-        style={
-            props.active ? Object.assign({}, Styles.circleButton, { backgroundColor: '#FF6F00' }) : Styles.circleButton
+    <Popup
+        trigger={
+            <Button
+                circular
+                style={
+                    props.active ? Object.assign({}, Styles.circleButton, { backgroundColor: '#FF6F00' }) : Styles.circleButton
+                }
+                icon={props.icon}
+                onClick={props.onClick}
+            />
         }
-        icon={props.icon}
-        onClick={props.onClick}
+        content={props.tooltip}
+        position='bottom center'
+        inverted
     />
 );
 
