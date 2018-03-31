@@ -2,6 +2,7 @@
   "name": "giphy_search",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://jd1388.github.io/giphy_search/",
   "dependencies": {
     "react": "^16.2.0",
     "react-copy-to-clipboard": "^5.0.1",
