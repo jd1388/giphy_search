@@ -61,7 +61,7 @@ export default class Random extends Component {
         }
 
         return (
-            <div>
+            <div style={Styles.randomContainer}>
                 <Header size='huge' dividing>Random</Header>
                 <div style={Styles.gifContainer}>
                     <Gif native gifUrl={gif} style={Styles.gif} displayMessage={displayMessage}/>
