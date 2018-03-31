@@ -7,5 +7,8 @@ export default {
     },
     gif: {
         minHeight: '50vh'
+    },
+    loader: {
+        alignSelf: 'center'
     }
 };

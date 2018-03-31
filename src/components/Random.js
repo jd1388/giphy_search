@@ -56,7 +56,7 @@ export default class Random extends Component {
                 this.getGif();
 
             return (
-                <Loader active size='massive'/>
+                <Loader active size='massive' inline='centered' style={Styles.loader}/>
             );
         }
 

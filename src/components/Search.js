@@ -58,7 +58,7 @@ export default class Search extends Component {
                 this.getGifs(search);
 
                 return (
-                    <Loader active size='massive'/>
+                    <Loader active size='massive' inline='centered' style={Styles.loader}/>
                 );
             }
 

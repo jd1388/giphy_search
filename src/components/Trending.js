@@ -58,7 +58,7 @@ export default class Trending extends Component {
                 this.getGifs();
 
                 return (
-                    <Loader active size='massive' inline='centered'/>
+                    <Loader active size='massive' inline='centered' style={Styles.loader}/>
                 );
             }
 

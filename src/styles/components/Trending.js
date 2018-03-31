@@ -3,5 +3,8 @@ export default {
         display: 'flex',
         justifyContent: 'space-between',
         flexWrap: 'wrap'
+    },
+    loader: {
+        alignSelf: 'center'
     }
 }

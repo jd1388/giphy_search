@@ -73,7 +73,9 @@ class SearchBar extends Component {
 const CircleButton = props => (
     <Button
         circular
-        style={props.active ? Object.assign({}, Styles.circleButton, { color: '#FF6F00' }) : Styles.circleButton}
+        style={
+            props.active ? Object.assign({}, Styles.circleButton, { backgroundColor: '#FF6F00' }) : Styles.circleButton
+        }
         icon={props.icon}
         onClick={props.onClick}
     />

@@ -14,7 +14,9 @@ export default {
     },
     mainContent: {
         padding: '5vh 20vw',
-        minHeight: 'calc(100vh - 250px)'
+        minHeight: 'calc(100vh - 250px)',
+        display: 'flex',
+        alignItems: 'center'
     },
     copyMessage: {
         position: 'fixed',
