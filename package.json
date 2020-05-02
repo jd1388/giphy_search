@@ -5,20 +5,29 @@
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "format": "npx prettier --write \"**/*.{js,svelte}\"",
-    "start": "sirv public"
+    "start": "sirv public",
+    "test": "jest src",
+    "test:watch": "yarn test --watch"
   },
   "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
     "@rollup/plugin-commonjs": "11.0.2",
     "@rollup/plugin-node-resolve": "^7.0.0",
+    "@testing-library/jest-dom": "^5.5.0",
+    "@testing-library/svelte": "^3.0.0",
+    "babel-jest": "^25.5.1",
     "eslint": "^6.8.0",
     "eslint-plugin-svelte3": "^2.7.3",
+    "jest": "^25.5.4",
     "prettier": "^2.0.5",
     "prettier-plugin-svelte": "^0.7.0",
     "rollup": "^1.20.0",
     "rollup-plugin-livereload": "^1.0.0",
     "rollup-plugin-svelte": "^5.0.3",
     "rollup-plugin-terser": "^5.1.2",
-    "svelte": "^3.0.0"
+    "svelte": "^3.0.0",
+    "svelte-jester": "^1.0.5"
   },
   "dependencies": {
     "sirv-cli": "^0.4.4"
