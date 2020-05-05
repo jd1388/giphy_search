@@ -1,3 +1,4 @@
 /public/build/
 .yarn
 .DS_Store
+node_modules

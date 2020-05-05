@@ -1,4 +1,9 @@
+<script>
+    import Header from '../header/Header.svelte';
+</script>
+
 <main>
+    <Header />
     <h1>Hello Jared!</h1>
     <p>
         Visit the
