@@ -1,0 +1,8 @@
+* {
+    font-family: 'Open Sans', sans-serif;
+    --black: rgb(35, 35, 35);
+}
+
+body {
+    margin: 0;
+}
