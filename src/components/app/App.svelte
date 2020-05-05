@@ -4,10 +4,12 @@
 
 <main>
     <Header />
-    <h1>Hello Jared!</h1>
-    <p>
-        Visit the
-        <a href="https://svelte.dev/tutorial">Svelte tutorial</a>
-        to learn how to build Svelte apps.
-    </p>
 </main>
+
+<style>
+    main {
+        display: grid;
+        grid-template-rows: 150px 1fr;
+        grid-template-areas: "header" "results";
+    }
+</style>
