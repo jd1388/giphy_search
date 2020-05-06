@@ -7,10 +7,12 @@ describe('App', () => {
         expect(true).toBeTruthy();
     });
 
-    it('renders', () => {
-        const {getByText} = render(App);
-        const headerText = getByText('Hello Jared!');
+    describe('header', () => {
+        it('renders the header components', () => {
+            const {getByTestId} = render(App);
+            const searchBar = getByTestId('search-bar');
 
-        expect(headerText).toBeDefined();
+            expect(searchBar).toBeInTheDocument();
+        });
     });
 });

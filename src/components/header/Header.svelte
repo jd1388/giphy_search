@@ -4,10 +4,13 @@
 </script>
 
 <div class="header-container">
-    <div class="search-bar">
+    <div
+        class="search-bar"
+        data-testid="search-bar"
+    >
         <input
             class="search-input"
-            data-testid="search-bar"
+            data-testid="search-input"
             placeholder="Search..."
             type="search"
         />
@@ -15,6 +18,7 @@
             aria-label="search"
             class="search-button"
             data-testid="search-button"
+            title="Search"
         >
             <Icon data={search} />
         </button>
@@ -25,7 +29,7 @@
     .header-container {
         background-color: var(--black);
         display: grid;
-        grid-template-columns: 200px 1fr 36px 36px 200px;
+        grid-template-columns: 1fr 1fr 36px 36px 1fr;
         grid-template-areas: ". . . . ." ". search-bar trending random ." ". . . . .";
         grid-template-rows: 48px 36px 48px;
     }
@@ -42,5 +46,11 @@
         border-top-left-radius: 4px;
         border-bottom-left-radius: 4px;
         padding: 8px;
+    }
+
+    .search-button {
+        border: none;
+        border-bottom-right-radius: 4px;
+        border-top-right-radius: 4px;
     }
 </style>

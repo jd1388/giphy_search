@@ -13,7 +13,7 @@ describe('Header', () => {
 
         it('is a search input', () => {
             const {getByTestId} = render(Header);
-            const searchBar = getByTestId('search-bar');
+            const searchBar = getByTestId('search-input');
 
             expect(searchBar).toHaveAttribute('type', 'search');
         });
@@ -26,6 +26,13 @@ describe('Header', () => {
 
             expect(searchButton).toBeInTheDocument();
         });
+
+        it('has the correct title', () => {
+            const {getByTitle} = render(Header);
+            const searchButton = getByTitle('Search');
+
+            expect(searchButton).toBeInTheDocument();
+        })
 
         it('displays a search icon', () => {
             const {getByRole} = render(Header);
