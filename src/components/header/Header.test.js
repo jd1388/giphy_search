@@ -3,7 +3,7 @@ import { render } from '@testing-library/svelte';
 import Header from './Header.svelte';
 
 describe('Header', () => {
-    describe('search bar', () => {
+    describe('Search Bar', () => {
         it('has the correct placeholder text', () => {
             const {getByPlaceholderText} = render(Header);
             const searchBar = getByPlaceholderText('Search...');
@@ -19,7 +19,7 @@ describe('Header', () => {
         });
     });
 
-    describe('search button', () => {
+    describe('Search Button', () => {
         it('has the correct label', () => {
             const {getByLabelText} = render(Header);
             const searchButton = getByLabelText('search');
@@ -32,13 +32,38 @@ describe('Header', () => {
             const searchButton = getByTitle('Search');
 
             expect(searchButton).toBeInTheDocument();
-        })
+        });
 
         it('displays a search icon', () => {
-            const {getByRole} = render(Header);
-            const searchButtonIcon = getByRole('presentation');
+            const {getByTestId} = render(Header);
+            const searchButtonIcon = getByTestId('search-icon');
 
             expect(searchButtonIcon).toBeInTheDocument();
         });
-    })
+    });
+
+    describe('Trending Button', () => {
+        it('has the correct label', () => {
+            const {getByLabelText} = render(Header);
+            const trendingButton = getByLabelText('trending');
+
+            expect(trendingButton).toBeInTheDocument();
+        });
+
+        it('has the correct title', () => {
+            const {getByTitle} = render(Header);
+            const trendingButton = getByTitle('Trending');
+
+            expect(trendingButton).toBeInTheDocument();
+        });
+
+        it('displays a fire icon', () => {
+            const {getByTestId} = render(Header);
+            const trendingButtonIcon = getByTestId('trending-icon');
+
+            expect(trendingButtonIcon).toBeInTheDocument();
+        });
+    });
+
+    // describe.todo('Random Button');
 });

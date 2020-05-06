@@ -1,6 +1,6 @@
 <script>
     import Icon from 'svelte-awesome/components/Icon.svelte';
-    import { search } from 'svelte-awesome/icons'
+    import { search, fire } from 'svelte-awesome/icons'
 </script>
 
 <div class="header-container">
@@ -20,9 +20,19 @@
             data-testid="search-button"
             title="Search"
         >
-            <Icon data={search} />
+            <div data-testid="search-icon">
+                <Icon data={search} />
+            </div>
         </button>
     </div>
+    <button
+        aria-label="trending"
+        title="Trending"
+    >
+        <div data-testid="trending-icon">
+            <Icon data={fire} />
+        </div>
+    </button>
 </div>
 
 <style>
