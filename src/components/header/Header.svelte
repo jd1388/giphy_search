@@ -3,6 +3,17 @@
     import { faFire, faRandom, faSearch } from '@fortawesome/free-solid-svg-icons';
 
     const iconStyle = 'fill: var(--white)';
+    const views = {
+        TRENDING: 'trending',
+        RANDOM: 'random',
+        SEARCH: 'search'
+    };
+    let activeView = views.TRENDING;
+
+    function setActiveView(view) {
+        activeView = view;
+    }
+
 </script>
 
 <div class="header-container">
@@ -20,6 +31,7 @@
             aria-label="search"
             class="search-button"
             data-testid="search-button"
+            on:click={() => setActiveView(views.SEARCH)}
             title="Search"
         >
             <div data-testid="search-icon">
@@ -30,6 +42,8 @@
     <button
         aria-label="trending"
         class="trending-button icon-button"
+        class:active={activeView === views.TRENDING}
+        on:click={() => setActiveView(views.TRENDING)}
         title="Trending"
     >
         <div data-testid="trending-icon">
@@ -42,6 +56,8 @@
     <button
         aria-label="random"
         class="random-button icon-button"
+        class:active={activeView === views.RANDOM}
+        on:click={() => setActiveView(views.RANDOM)}
         title="Random"
     >
         <div data-testid="random-icon">
@@ -95,5 +111,9 @@
         background-color: var(--lightBlack);
         border: none;
         border-radius: 50%;
+    }
+
+    .active {
+        background-color: var(--orange);
     }
 </style>
