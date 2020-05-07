@@ -10,9 +10,18 @@ describe('App', () => {
     describe('header', () => {
         it('renders the header components', () => {
             const {getByTestId} = render(App);
-            const searchBar = getByTestId('search-bar');
+            const header = getByTestId('header');
 
-            expect(searchBar).toBeInTheDocument();
+            expect(header).toBeInTheDocument();
+        });
+    });
+
+    describe('content', () => {
+        it('renders the content components', () => {
+            const {getByTestId} = render(App);
+            const content = getByTestId('content');
+
+            expect(content).toBeInTheDocument();
         });
     });
 });

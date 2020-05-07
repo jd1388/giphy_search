@@ -13,10 +13,12 @@
     function setActiveView(view) {
         activeView = view;
     }
-
 </script>
 
-<div class="header-container">
+<div
+    class="header-container"
+    data-testid="header"
+>
     <div
         class="search-bar"
         data-testid="search-bar"

@@ -1,9 +1,11 @@
 <script>
+    import Content from '../content/Content.svelte';
     import Header from '../header/Header.svelte';
 </script>
 
 <main>
     <Header />
+    <Content />
 </main>
 
 <style>
