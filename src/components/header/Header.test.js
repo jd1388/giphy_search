@@ -65,5 +65,26 @@ describe('Header', () => {
         });
     });
 
-    // describe.todo('Random Button');
+    describe('Random Button', () => {
+        it('has the correct label', () => {
+            const {getByLabelText} = render(Header);
+            const randomButton = getByLabelText('random');
+
+            expect(randomButton).toBeInTheDocument();
+        });
+
+        it('has the correct title', () => {
+            const {getByTitle} = render(Header);
+            const randomButton = getByTitle('Random');
+
+            expect(randomButton).toBeInTheDocument();
+        });
+
+        it('displays a fire icon', () => {
+            const {getByTestId} = render(Header);
+            const randomButtonIcon = getByTestId('random-icon');
+
+            expect(randomButtonIcon).toBeInTheDocument();
+        });
+    });
 });

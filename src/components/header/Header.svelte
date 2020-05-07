@@ -1,6 +1,6 @@
 <script>
     import Icon from 'svelte-awesome/components/Icon.svelte';
-    import { faFire, faSearch } from '@fortawesome/free-solid-svg-icons';
+    import { faFire, faRandom, faSearch } from '@fortawesome/free-solid-svg-icons';
 
     const iconStyle = 'fill: var(--white)';
 </script>
@@ -29,12 +29,24 @@
     </div>
     <button
         aria-label="trending"
-        class="trending-button"
+        class="trending-button icon-button"
         title="Trending"
     >
         <div data-testid="trending-icon">
             <Icon
                 data={faFire}
+                style={iconStyle}
+            />
+        </div>
+    </button>
+    <button
+        aria-label="random"
+        class="random-button icon-button"
+        title="Random"
+    >
+        <div data-testid="random-icon">
+            <Icon
+                data={faRandom}
                 style={iconStyle}
             />
         </div>
@@ -72,9 +84,16 @@
     }
 
     .trending-button {
+        grid-area: trending;
+    }
+
+    .random-button {
+        grid-area: random;
+    }
+
+    .icon-button {
         background-color: var(--lightBlack);
         border: none;
         border-radius: 50%;
-        grid-area: trending;
     }
 </style>
