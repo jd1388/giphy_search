@@ -2,6 +2,9 @@
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
     --black: rgb(35, 35, 35);
+    --lightBlack: rgb(67, 67, 67);
+    --orange: rgb(255, 111, 0);
+    --white: rgb(255, 255, 255);
 }
 
 body {

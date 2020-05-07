@@ -1,6 +1,8 @@
 <script>
     import Icon from 'svelte-awesome/components/Icon.svelte';
-    import { search, fire } from 'svelte-awesome/icons'
+    import { faFire, faSearch } from '@fortawesome/free-solid-svg-icons';
+
+    const iconStyle = 'fill: var(--white)';
 </script>
 
 <div class="header-container">
@@ -21,16 +23,20 @@
             title="Search"
         >
             <div data-testid="search-icon">
-                <Icon data={search} />
+                <Icon data={faSearch} />
             </div>
         </button>
     </div>
     <button
         aria-label="trending"
+        class="trending-button"
         title="Trending"
     >
         <div data-testid="trending-icon">
-            <Icon data={fire} />
+            <Icon
+                data={faFire}
+                style={iconStyle}
+            />
         </div>
     </button>
 </div>
@@ -39,6 +45,7 @@
     .header-container {
         background-color: var(--black);
         display: grid;
+        grid-column-gap: 8px;
         grid-template-columns: 1fr 1fr 36px 36px 1fr;
         grid-template-areas: ". . . . ." ". search-bar trending random ." ". . . . .";
         grid-template-rows: 48px 36px 48px;
@@ -62,5 +69,12 @@
         border: none;
         border-bottom-right-radius: 4px;
         border-top-right-radius: 4px;
+    }
+
+    .trending-button {
+        background-color: var(--lightBlack);
+        border: none;
+        border-radius: 50%;
+        grid-area: trending;
     }
 </style>
