@@ -36,7 +36,10 @@
             on:click={() => setActiveView(views.SEARCH)}
             title="Search"
         >
-            <div data-testid="search-icon">
+            <div
+                class="icon-container"
+                data-testid="search-icon"
+            >
                 <Icon data={faSearch} />
             </div>
         </button>
@@ -48,7 +51,10 @@
         on:click={() => setActiveView(views.TRENDING)}
         title="Trending"
     >
-        <div data-testid="trending-icon">
+        <div
+            class="icon-container"
+            data-testid="trending-icon"
+        >
             <Icon
                 data={faFire}
                 style={iconStyle}
@@ -62,7 +68,10 @@
         on:click={() => setActiveView(views.RANDOM)}
         title="Random"
     >
-        <div data-testid="random-icon">
+        <div
+            class="icon-container"
+            data-testid="random-icon"
+        >
             <Icon
                 data={faRandom}
                 style={iconStyle}
@@ -117,5 +126,10 @@
 
     .active {
         background-color: var(--orange);
+    }
+
+    .icon-container {
+        display: flex;
+        justify-content: center;
     }
 </style>
