@@ -8,5 +8,6 @@ module.exports = {
     bail: false,
     verbose: true,
     transformIgnorePatterns: ["node_modules/(?!(svelte-awesome)/)"],
-    setupFilesAfterEnv: ["@testing-library/jest-dom/extend-expect"]
+    setupFilesAfterEnv: ["@testing-library/jest-dom/extend-expect"],
+    testRunner: "jest-circus/runner"
 };
