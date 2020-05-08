@@ -1,6 +1,9 @@
 import { render } from '@testing-library/svelte';
 
+import { displayedView } from '../../stores';
+
 import Content from './Content.svelte';
+import { Views } from '../../enums';
 
 describe('Content', () => {
     it('renders', () => {
@@ -10,24 +13,42 @@ describe('Content', () => {
         expect(contentContainer).toBeInTheDocument();
     });
 
-    it('displays trending', () => {
-        const { getByText } = render(Content);
+    it('displays trending when it is the displayed view', () => {
+        displayedView.set(Views.TRENDING);
+
+        const { getByText, queryByText } = render(Content);
         const trendingContainer = getByText('Trending');
+        const randomContainer = queryByText('Random');
+        const searchContainer = queryByText('Search');
 
         expect(trendingContainer).toBeVisible();
+        expect(randomContainer).not.toBeInTheDocument();
+        expect(searchContainer).not.toBeInTheDocument();
     });
 
     it('displays random', () => {
-        const { getByText } = render(Content);
+        displayedView.set(Views.RANDOM);
+
+        const { getByText, queryByText } = render(Content);
         const randomContainer = getByText('Random');
+        const trendingContainer = queryByText('Trending');
+        const searchContainer = queryByText('Search');
 
         expect(randomContainer).toBeVisible();
+        expect(trendingContainer).not.toBeInTheDocument();
+        expect(searchContainer).not.toBeInTheDocument();
     });
 
     it('displays search', () => {
-        const { getByText } = render(Content);
+        displayedView.set(Views.SEARCH);
+
+        const { getByText, queryByText } = render(Content);
         const searchContainer = getByText('Search');
+        const trendingContainer = queryByText('Trending');
+        const randomContainer = queryByText('Random');
 
         expect(searchContainer).toBeVisible();
+        expect(trendingContainer).not.toBeInTheDocument();
+        expect(randomContainer).not.toBeInTheDocument();
     });
 });
