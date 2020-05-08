@@ -2,16 +2,13 @@
     import Icon from 'svelte-awesome/components/Icon.svelte';
     import { faFire, faRandom, faSearch } from '@fortawesome/free-solid-svg-icons';
 
+    import { Views } from '../../enums';
+    import { displayedView } from '../../stores';
+
     const iconStyle = 'fill: var(--white)';
-    const views = {
-        TRENDING: 'trending',
-        RANDOM: 'random',
-        SEARCH: 'search'
-    };
-    let activeView = views.TRENDING;
 
     function setActiveView(view) {
-        activeView = view;
+        displayedView.set(view);
     }
 </script>
 
@@ -33,7 +30,7 @@
             aria-label="search"
             class="search-button"
             data-testid="search-button"
-            on:click={() => setActiveView(views.SEARCH)}
+            on:click={() => setActiveView(Views.SEARCH)}
             title="Search"
         >
             <div
@@ -47,8 +44,9 @@
     <button
         aria-label="trending"
         class="trending-button icon-button"
-        class:active={activeView === views.TRENDING}
-        on:click={() => setActiveView(views.TRENDING)}
+        class:active={$displayedView === Views.TRENDING}
+        data-testid="trending-button"
+        on:click={() => setActiveView(Views.TRENDING)}
         title="Trending"
     >
         <div
@@ -64,8 +62,9 @@
     <button
         aria-label="random"
         class="random-button icon-button"
-        class:active={activeView === views.RANDOM}
-        on:click={() => setActiveView(views.RANDOM)}
+        class:active={$displayedView === Views.RANDOM}
+        data-testid="random-button"
+        on:click={() => setActiveView(Views.RANDOM)}
         title="Random"
     >
         <div
