@@ -1,12 +1,19 @@
 * {
-    box-sizing: border-box;
-    font-family: 'Open Sans', sans-serif;
     --black: rgb(35, 35, 35);
     --lightBlack: rgb(67, 67, 67);
+    --lightGray: rgb(192, 192, 192);
     --orange: rgb(255, 111, 0);
     --white: rgb(255, 255, 255);
+    box-sizing: border-box;
+    color: var(--black);
+    font-family: 'Open Sans', sans-serif;
 }
 
 body {
     margin: 0;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--lightGray);
 }
