@@ -1,11 +1,11 @@
 import Chance from 'chance';
 import { render } from '@testing-library/svelte';
 
-import { getTrendingGifs } from '../../services/giphy-service';
+import { getTrendingGifs } from '../../services/giphy-service/GiphyService';
 
 import Trending from './Trending.svelte';
 
-jest.mock('../../services/giphy-service');
+jest.mock('../../services/giphy-service/GiphyService');
 
 describe('Trending', () => {
     const chance = new Chance();

@@ -1,5 +1,5 @@
 <script>
-    import { getTrendingGifs } from '../../services/giphy-service';
+    import { getTrendingGifs } from '../../services/giphy-service/GiphyService';
 
     const trendingGifsPromise = getTrendingGifs();
 </script>
