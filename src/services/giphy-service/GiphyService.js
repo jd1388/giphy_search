@@ -17,6 +17,7 @@ export const getTrendingGifs = async () => {
     return trendingGifsData.data.map(trendingGifData => ({
         gif: trendingGifData.images.fixed_height_small.url,
         source: trendingGifData.images.original.url,
-        still: trendingGifData.images.fixed_height_small_still.url
+        still: trendingGifData.images.fixed_height_small_still.url,
+        title: trendingGifData.title
     }));
 };

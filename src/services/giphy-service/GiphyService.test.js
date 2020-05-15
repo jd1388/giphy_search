@@ -15,7 +15,8 @@ describe('Giphy Service', () => {
             original: {
                 url: chance.url()
             }
-        }
+        },
+        title: chance.sentence()
     });
 
     global.fetch = jest.fn();
@@ -45,7 +46,8 @@ describe('Giphy Service', () => {
             const expectedGifs = fakeGifsData.data.map(gifData => ({
                 gif: gifData.images.fixed_height_small.url,
                 source: gifData.images.original.url,
-                still: gifData.images.fixed_height_small_still.url
+                still: gifData.images.fixed_height_small_still.url,
+                title: gifData.title
             }));
             const actualGifs = await getTrendingGifs();
 
