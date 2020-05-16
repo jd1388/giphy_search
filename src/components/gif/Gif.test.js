@@ -1,4 +1,4 @@
-import { render, fireEvent } from '@testing-library/svelte';
+import { render, fireEvent, act } from '@testing-library/svelte';
 import Chance from 'chance';
 
 import Gif from './Gif.svelte';
@@ -37,7 +37,7 @@ describe('Gif', () => {
         expect(gif).toHaveAttribute('src', expectedStillGif);
     });
 
-    it('displays the animated gif when being hovered', () => {
+    it('displays the animated gif when being hovered', async () => {
         const expectedAnimatedGif = chance.url();
         const props = {
             ...defaultProps,
@@ -46,8 +46,23 @@ describe('Gif', () => {
         const { getByTestId } = render(Gif, props);
         const gif = getByTestId('gif');
 
-        fireEvent.mouseOver(gif);
+        await fireEvent.mouseOver(gif);
 
         expect(gif).toHaveAttribute('src', expectedAnimatedGif);
+    });
+
+    it('displays the still gif after moving the mouse off of the gif', async () => {
+        const expectedStillGif = chance.url();
+        const props = {
+            ...defaultProps,
+            still: expectedStillGif
+        };
+        const { getByTestId } = render(Gif, props);
+        const gif = getByTestId('gif');
+
+        await fireEvent.mouseOver(gif);
+        await fireEvent.mouseOut(gif);
+
+        expect(gif).toHaveAttribute('src', expectedStillGif);
     });
 });

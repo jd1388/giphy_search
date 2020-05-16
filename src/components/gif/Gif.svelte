@@ -6,11 +6,13 @@
     let gifToDisplay = still;
 
     const switchToAnimatedGif = () => gifToDisplay = gif;
+    const switchToStillGif = () => gifToDisplay = still;
 </script>
 
 <img
     alt={title}
     data-testid="gif"
-    onmouseover={switchToAnimatedGif}
+    on:mouseover={switchToAnimatedGif}
+    on:mouseout={switchToStillGif}
     src={gifToDisplay}
 />
