@@ -12,10 +12,16 @@ describe('Trending', () => {
     const createFakeGif = () => ({
         gif: chance.url(),
         source: chance.url(),
-        still: chance.url() 
+        still: chance.url(),
+        title: chance.sentence()
     });
     const fakeGifs = chance.n(createFakeGif, 50);
 
+    global.navigator = {
+        clipboard: {
+            writeText: jest.fn()
+        }
+    };
     getTrendingGifs.mockResolvedValue(fakeGifs);
 
     it('should display a "Trending" header', () => {
@@ -39,7 +45,7 @@ describe('Trending', () => {
 
     it('should display the trending gifs after loading', async () => {
         const { findAllByTestId, queryByTestId } = render(Trending);
-        const trendingGifs = await findAllByTestId('trending-gif');
+        const trendingGifs = await findAllByTestId('gif');
         const loadingSpinner = queryByTestId('loading-trending');
 
         trendingGifs.forEach(trendingGif => {

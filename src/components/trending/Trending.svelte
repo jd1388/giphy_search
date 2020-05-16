@@ -1,4 +1,5 @@
 <script>
+    import Gif from '../gif/Gif.svelte';
     import { getTrendingGifs } from '../../services/giphy-service/GiphyService';
 
     const trendingGifsPromise = getTrendingGifs();
@@ -18,12 +19,13 @@
         {:then trendingGifs}
             <div class="gifs-container">
                 {#each trendingGifs as trendingGif}
-                    <img
+                    <!-- <img
                         alt="trending gif"
                         class="gif"
                         data-testid="trending-gif"
                         src={trendingGif.still}
-                    >
+                    > -->
+                    <Gif {...trendingGif} />
                 {/each}
             </div>
         {/await}
@@ -50,9 +52,5 @@
     .gifs-container::after {
         content: "";
         flex: auto;
-    }
-
-    .gif {
-        padding: 4px;
     }
 </style>

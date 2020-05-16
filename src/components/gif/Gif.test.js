@@ -13,6 +13,10 @@ describe('Gif', () => {
         title: chance.sentence()
     };
 
+    navigator.clipboard = {
+        writeText: jest.fn()
+    };
+
     it('displays a gif with the title as the alt text', () => {
         const expectedAltText = chance.sentence();
         const props = {
@@ -64,5 +68,19 @@ describe('Gif', () => {
         await fireEvent.mouseOut(gif);
 
         expect(gif).toHaveAttribute('src', expectedStillGif);
+    });
+
+    it('copies the source gif to the clipboard when clicked', async () => {
+        const expectedSourceGif = chance.url();
+        const props = {
+            ...defaultProps,
+            source: expectedSourceGif
+        };
+        const { getByTestId } = render(Gif, props);
+        const gif = getByTestId('gif');
+
+        await fireEvent.click(gif);
+
+        expect(navigator.clipboard.writeText).toHaveBeenCalledWith(expectedSourceGif);
     });
 });
