@@ -4,7 +4,10 @@
     import { Views } from '../../enums';
 </script>
 
-<div data-testid="content">
+<div
+    class="content"
+    data-testid="content"
+>
     {#if $displayedView === Views.TRENDING}
         <Trending />
     {:else if $displayedView === Views.RANDOM}
@@ -13,3 +16,11 @@
         <p>Search</p>
     {/if}
 </div>
+
+<style>
+    .content {
+        display: grid;
+        grid-template-areas: ". content .";
+        grid-template-columns: 1fr 3fr 1fr;
+    }
+</style>
