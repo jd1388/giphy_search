@@ -3,12 +3,16 @@
     import { faFire, faRandom, faSearch } from '@fortawesome/free-solid-svg-icons';
 
     import { Views } from '../../enums';
-    import { displayedView } from '../../stores';
+    import { displayedView, searchTerm } from '../../stores';
 
     const iconStyle = 'fill: var(--white)';
 
     function setActiveView(view) {
         displayedView.set(view);
+    }
+
+    function setSearchTerm(input) {
+        searchTerm.set(input);
     }
 </script>
 
@@ -21,6 +25,7 @@
         data-testid="search-bar"
     >
         <input
+            bind:value={$searchTerm}
             class="search-input"
             data-testid="search-input"
             placeholder="Search..."

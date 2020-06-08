@@ -1,12 +1,15 @@
-import { render, fireEvent } from '@testing-library/svelte';
+import { render, fireEvent, getByTestId, waitFor } from '@testing-library/svelte';
 import { get } from 'svelte/store';
+import { Chance } from 'chance';
 
-import { displayedView } from '../../stores';
+import { displayedView, searchTerm } from '../../stores';
 import { Views } from '../../enums';
 
 import Header from './Header.svelte';
 
 describe('Header', () => {
+    const chance = new Chance();
+
     describe('Search Bar', () => {
         it('has the correct placeholder text', () => {
             const { getByPlaceholderText } = render(Header);
@@ -20,6 +23,23 @@ describe('Header', () => {
             const searchBar = getByTestId('search-input');
 
             expect(searchBar).toHaveAttribute('type', 'search');
+        });
+
+        it('sets the search term when typed into', () => {
+            const { getByTestId } = render(Header);
+            const searchBar = getByTestId('search-input');
+            const expectedSearchTerm = chance.word();
+            const inputEvent = {
+                target: {
+                    value: expectedSearchTerm
+                }
+            };
+
+            fireEvent.change(searchBar, inputEvent);
+
+            waitFor(() => {
+                expect(get(searchTerm)).toEqual(expectedSearchTerm);
+            });
         });
     });
 

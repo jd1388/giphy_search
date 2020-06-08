@@ -18,12 +18,6 @@
     {:then trendingGifs}
         <div class="gifs-container">
             {#each trendingGifs as trendingGif}
-                <!-- <img
-                    alt="trending gif"
-                    class="gif"
-                    data-testid="trending-gif"
-                    src={trendingGif.still}
-                > -->
                 <Gif {...trendingGif} />
             {/each}
         </div>
