@@ -98,6 +98,7 @@
 
     .search-input {
         border: none;
+        border-radius: 0;
         border-top-left-radius: 4px;
         border-bottom-left-radius: 4px;
         padding: 8px;
@@ -105,6 +106,7 @@
 
     .search-button {
         border: none;
+        border-radius: 0;
         border-bottom-right-radius: 4px;
         border-top-right-radius: 4px;
     }
