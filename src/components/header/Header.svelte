@@ -14,6 +14,15 @@
     function setSearchTerm(input) {
         searchTerm.set(input);
     }
+
+    function setViewToSearchOnEnter({keyCode}) {
+        const enterKeycode = 13;
+        const enterIsPressed = keyCode === enterKeycode;
+
+        if (enterIsPressed) {
+            setActiveView(Views.SEARCH);
+        }
+    }
 </script>
 
 <div
@@ -28,6 +37,7 @@
             bind:value={$searchTerm}
             class="search-input"
             data-testid="search-input"
+            on:keypress={setViewToSearchOnEnter}
             placeholder="Search..."
             type="search"
         />

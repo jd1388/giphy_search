@@ -41,6 +41,19 @@ describe('Header', () => {
                 expect(get(searchTerm)).toEqual(expectedSearchTerm);
             });
         });
+
+        it('sets the view to search when submitted from with enter', () => {
+            const { getByTestId } = render(Header);
+            const searchBar = getByTestId('search-input');
+            const enterKeycode = 13;
+            const submitEvent = {
+                keyCode: enterKeycode
+            };
+
+            fireEvent.keyPress(searchBar, submitEvent);
+
+            expect(get(displayedView)).toEqual(Views.SEARCH);
+        });
     });
 
     describe('Search Button', () => {
