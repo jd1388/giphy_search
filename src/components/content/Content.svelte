@@ -1,5 +1,6 @@
 <script>
     import Trending from '../trending/Trending.svelte';
+    import SearchResults from '../search-results/SearchResults.svelte';
     import { displayedView } from '../../stores';
     import { Views } from '../../enums';
 </script>
@@ -13,7 +14,7 @@
     {:else if $displayedView === Views.RANDOM}
         <p>Random</p>
     {:else if $displayedView === Views.SEARCH}
-        <p>Search</p>
+        <SearchResults />
     {/if}
 </div>
 

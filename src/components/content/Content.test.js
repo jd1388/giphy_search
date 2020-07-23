@@ -16,10 +16,10 @@ describe('Content', () => {
     it('displays trending when it is the displayed view', () => {
         displayedView.set(Views.TRENDING);
 
-        const { getByTestId, queryByText } = render(Content);
+        const { getByTestId, queryByText, queryByTestId } = render(Content);
         const trendingContainer = getByTestId('trending-container');
         const randomContainer = queryByText('Random');
-        const searchContainer = queryByText('Search');
+        const searchContainer = queryByTestId('search-results-container');
 
         expect(trendingContainer).toBeVisible();
         expect(randomContainer).not.toBeInTheDocument();
@@ -29,10 +29,10 @@ describe('Content', () => {
     it('displays random', () => {
         displayedView.set(Views.RANDOM);
 
-        const { getByText, queryByTestId, queryByText } = render(Content);
+        const { getByText, queryByTestId } = render(Content);
         const randomContainer = getByText('Random');
         const trendingContainer = queryByTestId('trending-container');
-        const searchContainer = queryByText('Search');
+        const searchContainer = queryByTestId('search-results-container');
 
         expect(randomContainer).toBeVisible();
         expect(trendingContainer).not.toBeInTheDocument();
@@ -42,8 +42,8 @@ describe('Content', () => {
     it('displays search', () => {
         displayedView.set(Views.SEARCH);
 
-        const { getByText, queryByTestId, queryByText } = render(Content);
-        const searchContainer = getByText('Search');
+        const { getByTestId, queryByTestId, queryByText } = render(Content);
+        const searchContainer = getByTestId('search-results-container');
         const trendingContainer = queryByTestId('trending-container');
         const randomContainer = queryByText('Random');
 
